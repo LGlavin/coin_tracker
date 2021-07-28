@@ -16,7 +16,7 @@ def get_doge_price():
     response = requests.get(url, headers=headers)
     response_json = response.json()
 
-    # extract the bitcoin price from the json data
+    # extract the doge price from the json data
     doge_price = response_json['data'][7]
     return doge_price['quote']['USD']['price']
 
