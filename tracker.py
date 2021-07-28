@@ -17,8 +17,8 @@ def get_doge_price():
     response_json = response.json()
 
     # extract the bitcoin price from the json data
-    btc_price = response_json['data'][0]
-    return btc_price['quote']['USD']['price']
+    doge_price = response_json['data'][7]
+    return doge_price['quote']['USD']['price']
 
 def send_message(chat_id, msg):
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={chat_id}&text={msg}"
@@ -34,7 +34,7 @@ def main():
         price_list.append(price)
 
         if price < threshold:
-            send_message(chat_id=chat_id, msg=f'BTC Price Drop Alert: {price}')   
+            send_message(chat_id=chat_id, msg=f'Doge price drop Alert: {price}')   
 
         if len(price_list) > 6:
             send_message(chat_id=chat_id, msg=f'latest prices: {price_list}')
